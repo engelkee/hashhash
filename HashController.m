@@ -3,7 +3,7 @@
 //  HashHash
 //
 //  Created by Dominik Gwosdek on 11.04.08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Dominik Gwosdek. All rights reserved.
 //
 
 #import "HashController.h"

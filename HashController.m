@@ -32,6 +32,24 @@
 	NSLog(@"TF Value: %@", [hashTextField stringValue]);
 }
 
+- (IBAction)openFile:(id)sender {
+	int result;
+//	NSArray *fileTypes = [NSArray arrayWithObject:@"txt"];
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	[openPanel setAllowsMultipleSelection:FALSE];
+	[openPanel setCanChooseDirectories:FALSE];
+	[openPanel setTitle:@"Choose File"];
+	result = [openPanel runModalForDirectory:NSHomeDirectory() file:nil types:nil];
+	
+	if(result == NSOKButton) {
+		filePath = [[openPanel filenames] objectAtIndex:0];
+		[appWindow setTitle:[filePath lastPathComponent]];
+		//[self generateHash:[[pb propertyListForType:NSFilenamesPboardType] objectAtIndex:0]];
+		[NSThread detachNewThreadSelector:@selector(generateHash) toTarget:self withObject:nil];
+	}
+}
+
+
 - (void)generateHash {
 	NSLog(@"generate hash with file: %@", filePath);
 	[progress startAnimation:self];

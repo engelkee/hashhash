@@ -17,5 +17,6 @@
 }
 
 - (IBAction)copyToClipBoard:(id)sender;
+- (IBAction)openFile:(id)sender;
 - (void)generateHash;
 @end

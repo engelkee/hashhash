@@ -36,10 +36,11 @@
 	int result;
 //	NSArray *fileTypes = [NSArray arrayWithObject:@"txt"];
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowsMultipleSelection:FALSE];
-	[openPanel setCanChooseDirectories:FALSE];
+	[openPanel setDelegate:self];
+	[openPanel setAllowsMultipleSelection:NO];
+	[openPanel setCanChooseDirectories:NO];
 	[openPanel setTitle:@"Choose File"];
-	result = [openPanel runModalForDirectory:NSHomeDirectory() file:nil types:nil];
+	result = [openPanel runModalForDirectory:nil file:nil types:nil];
 	
 	if(result == NSOKButton) {
 		filePath = [[openPanel filenames] objectAtIndex:0];
@@ -49,6 +50,14 @@
 	}
 }
 
+- (BOOL)panel:(id)sender shouldShowFilename:(NSString *)filename {
+	NSString *ext = [filename pathExtension];
+	NSLog(@"%@", ext);
+	if([ext isEqualToString:@"app"]) {
+		return NO;
+	}
+	return YES;
+}
 
 - (void)generateHash {
 	NSLog(@"generate hash with file: %@", filePath);

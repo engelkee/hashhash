@@ -11,8 +11,10 @@
 
 @interface HashController : NSObject {
 	IBOutlet NSTextField *hashTextField;
+	IBOutlet NSTextField *shaTextField;
 	IBOutlet NSWindow *appWindow;
 	IBOutlet NSProgressIndicator *progress;
+	IBOutlet NSTextField *progressTextField;
 	NSString *filePath;
 }
 

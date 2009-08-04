@@ -70,35 +70,7 @@
 	NSString *outString = [NSString stringWithFormat:@"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",md5[0],md5[1],md5[2],md5[3],md5[4],md5[5],md5[6],md5[7],md5[8],md5[9],md5[10],md5[11],md5[12],md5[13],md5[14],md5[15]];
 	NSLog(@"hash: %@", outString);
 	[hashTextField setStringValue:outString];
-	/*
-	NSData *data;
-	NSTask *task = [[NSTask alloc] init];
-	NSPipe *pipe = [[NSPipe alloc] init];
-	[task setLaunchPath:@"/sbin/md5"];
-	[task setArguments:[NSArray arrayWithObjects:@"-q", filePath, nil]];
-	[task setStandardOutput:pipe];
-	NSFileHandle *fh = [pipe fileHandleForReading];
-	NSLog(@"launchpath: %@", [task launchPath]);
-	[task launch];
-	
-	while ((data = [fh availableData]) && [data length]) {
-		NSLog(@"data: %@", data);
-		NSString *outString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"String: %@", outString);
-		[hashTextField setStringValue:outString];
-	}
-	
-	[task waitUntilExit];
-	*/
-	
-//	NSLog(@"Data: %@", data);
-//	NSString *outString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[progress stopAnimation:self];
-	
-	/*
-	[pipe release];
-	[task release];
-	 */
 }
 
 - (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender
